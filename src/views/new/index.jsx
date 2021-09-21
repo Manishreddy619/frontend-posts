@@ -19,7 +19,7 @@ const NewBlogPost = () => {
 			formData.append('profilepic', avatar);
 			formData.append('content', content);
 
-			const response = await fetch('http://localhost:3002/blogposts', {
+			const response = await fetch(process.env.REACT_APP_API_URL, {
 				method: 'POST',
 				body: formData,
 			});

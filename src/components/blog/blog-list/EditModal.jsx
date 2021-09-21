@@ -21,7 +21,7 @@ const EditModal = ({ id }, props) => {
 			formData.append('profilepic', avatar);
 			formData.append('description', description);
 
-			const response = await fetch('http://localhost:3002/blogposts/' + id, {
+			const response = await fetch(process.env.REACT_APP_API_URL / +id, {
 				method: 'PUT',
 				body: formData,
 			});

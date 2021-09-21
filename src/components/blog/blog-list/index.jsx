@@ -12,7 +12,7 @@ const BlogList = () => {
 
 	const getPosts = async () => {
 		try {
-			const apiResp = await fetch('http://localhost:3002/blogPosts');
+			const apiResp = await fetch(process.env.REACT_APP_API_URL);
 			if (apiResp.ok) {
 				let bookList = await apiResp.json();
 				return bookList;
@@ -25,10 +25,11 @@ const BlogList = () => {
 			throw err;
 		}
 	};
+	console.log(process.env.REACT_APP_API_URL);
 	const deletePosts = async (id) => {
 		try {
 			const apiResp = await fetch(
-				'http://localhost:3002/blogPosts/' + id,
+				process.env.REACT_APP_API_URL / +id,
 
 				{
 					method: 'DELETE',
@@ -47,7 +48,7 @@ const BlogList = () => {
 	};
 	const updatePost = async (id, postData) => {
 		try {
-			const apiResp = await fetch('http://localhost:3002/blogPosts/' + id, {
+			const apiResp = await fetch(process.env.REACT_APP_API_URL / +id, {
 				method: 'PUT',
 				body: JSON.stringify(postData),
 				headers: {
