@@ -12,7 +12,7 @@ const BlogList = () => {
 
 	const getPosts = async () => {
 		try {
-			const apiResp = await fetch(process.env.REACT_APP_API_URL);
+			const apiResp = await fetch(process.env.REACT_APP_API_URL + '/blogPosts');
 			if (apiResp.ok) {
 				let bookList = await apiResp.json();
 				return bookList;
